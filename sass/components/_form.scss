@@ -78,10 +78,7 @@
       height: 1.3rem;
       width: 1.3rem;
       border-radius: 50%;
-      position: absolute; //Parent doesnt have to be relative, just needs a position property.
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      @include absoluteCenter; //Parent doesnt have to be relative, just needs a position property.
       background-color: $color-primary;
       opacity: 0;
       transition: all 0.2s;
