@@ -23,14 +23,19 @@
     width: 15rem;
     height: 15rem; //must have defined dimensions for shape-outside to work
     float: left; //element must be floated for shape-outside to work
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%); //radius
-
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%); //make element a circle
 
     transform: translateX(-3rem) skewX(12deg); //Use transform on clip path elements not margin or padding
     position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+
+    @supports (-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%); //radius
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%); //make element a circle
+      border-radius: none;
+    }
 
     @include respond(phone) {
       transform: translateX(-3rem) skewX(0);
